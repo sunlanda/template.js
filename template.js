@@ -41,7 +41,8 @@
     var modifierMap = {
         '': function (param) {return nothing(param)},
         'h': function (param) {return encodeHTML(param)},
-        'u': function (param) {return encodeURI(param)}
+        'u': function (param) {return encodeURI(param)},
+        'n': function (param) {return nulls(param)},
     };
 
     var toString = {}.toString;
@@ -98,6 +99,9 @@
     }
     function nothing(param) {
         return param;
+    }
+    function nulls(source) {
+        return source==null ? '' : String(source)
     }
     function encodeHTML(source) {
         return String(source)
